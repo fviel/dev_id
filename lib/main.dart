@@ -6,7 +6,25 @@ void main() {
   ));
 }
 
-class DevCard extends StatelessWidget {
+/**
+ * Stateless widget é estático, num muda valor!!
+ */
+class DevCard extends StatefulWidget {
+  @override
+  _DevCardState createState() => _DevCardState();
+}
+
+
+/**
+ * Retorna uma isntancia do estado
+ */
+class _DevCardState extends State<DevCard> {
+
+  int experience = 0;
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,12 +40,22 @@ class DevCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // Image.asset('assets/images/avatar.png'),
-            Image(
-              image:AssetImage('assets/images/avatar.png'),
-              height: 100.0,
-              width: 100.0,
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/images/avatar.png'),
+                radius: 50.0,
+              ),
             ),
+            Divider(
+              height:60.0,
+              color:Colors.grey[800],
+            ),
+            // Image.asset('assets/images/avatar.png'),
+            // Image(
+            //   image:AssetImage('assets/images/avatar.png'),
+            //   height: 100.0,
+            //   width: 100.0,
+            // ),
             SizedBox(height:10.0),
             Text(
               'NAME',
@@ -62,7 +90,7 @@ class DevCard extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              '8',
+              '$experience',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2.0,
@@ -91,6 +119,20 @@ class DevCard extends StatelessWidget {
               ],
             ),
           ],
+        ),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState((){
+            experience++;
+          });
+        },
+        elevation: 1.0,
+        backgroundColor: Colors.grey[800],
+        child: Icon(
+          Icons.add,
+          color: Colors.lightBlue,
         ),
       ),
     );
