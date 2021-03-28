@@ -80,7 +80,7 @@ class _DevCardState extends State<DevCard> {
               height: 30.0,
             ),
             Text(
-              'EXPERIENCE',
+              'EXPERIENCE ',
               style: TextStyle(
                 color: Colors.grey,
                 letterSpacing: 2.0,
